@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Link para o FontAwesome -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Capitão Pátria - O Verdadeiro Herói</title>
+
+  <!-- CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      overflow-x: hidden;
+      color: #fff;
+    }
+
+/* Customizando a barra de rolagem */
+::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1c1c1c;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ff4444;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff2222;
+    }
+
+    #hero {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url('capitao_patria_bg.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
+    }
+
+    #hero h1 {
+      font-size: 80px;
+      color: #ff2222;
+      text-shadow: 3px 3px 12px rgba(255, 0, 0, 0.7);
+      opacity: 0;
+    }
+
+    #hero .slogan {
+      font-size: 36px;
+      margin-top: 20px;
+      color: #fff;
+      opacity: 0;
+      text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.6);
+    }
+
+    .content {
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .content h2 {
+      font-size: 50px;
+      color: #ff4444;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+      letter-spacing: 5px;
+      opacity: 0;
+    }
+
+    .description {
+      font-size: 20px;
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 50px;
+      opacity: 0;
+      font-weight: 300;
+      text-shadow: 2px 2px 6px rgba(255, 0, 0, 0.7);
+    }
+
+    .description p {
+      margin-bottom: 20px;
+    }
+
+    .cta {
+      font-size: 24px;
+      color: #ff4444;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .cta:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    #video-section, #feitos-section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    #video-section video, #feitos-section video {
+      width: 80%;
+      border: 5px solid #ff4444;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    }
+
+    #imagens-section {
+      width: 100%;
+      background-color: #1c1c1c;
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    #imagens-section h2 {
+      font-size: 50px;
+      color: #ff4444;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      letter-spacing: 5px;
+    }
+
+    #imagens-section .galeria {
+      display: flex;
+      flex-direction: column; /* Mantendo como coluna */
+      gap: 20px;
+      margin-top: 20px;
+      align-items: center; /* Centralizando as imagens */
+    }
+
+    #imagens-section .galeria .imagem-item {
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #imagens-section .galeria img {
+      width: 100%;
+      height: auto;
+      border: 5px solid #ff4444;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+      transition: transform 0.2s ease-in-out; /* Menor tempo para um efeito mais fluido */
+    }
+
+    #imagens-section .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    .imagem-item p {
+      color: #fff;
+      font-size: 18px;
+      margin-top: 15px;
+      font-weight: 300;
+      text-shadow: 2px 2px 6px rgba(255, 0, 0, 0.7);
+    }
+
+    #heroi-section {
+  width: 100%;
+  text-align: center;
+  padding: 60px 10%;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+#heroi-section h2 {
+  font-size: 50px;
+  color: #ff4444;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  letter-spacing: 5px;
+}
+
+.heroi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroi-container img {
+  width: 800px; /* Aumentei a largura */
+  max-width: 90%; /* Adicionei responsividade para telas menores */
+  height: auto; /* Mantém a proporção da imagem */
+  border: 5px solid #ff4444;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.heroi-container p {
+  font-size: 20px;
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 600px;
+  text-align: center;
+}
+
+#nosso-heroi-section {
+  width: 100%;
+  text-align: center;
+  padding: 60px 10%;
+  background-color: #1c1c1c;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#nosso-heroi-section img {
+  width: 800px;
+  height: auto;
+  margin: 20px 0;
+  border: 5px solid #ff4444;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+#nosso-heroi-section h2 {
+  font-size: 50px;
+  color: #ff4444;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 5px;
+}
+
+#nosso-heroi-section p {
+  color: #fff;
+      font-size: 18px;
+      margin-top: 15px;
+      font-weight: 300;
+      text-shadow: 2px 2px 6px rgba(255, 0, 0, 0.7);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 50px; /* Reduzindo o tamanho do título */
+  }
+
+  .slogan {
+    font-size: 24px; /* Menor tamanho da slogan */
+  }
+
+  .content h2 {
+    font-size: 36px; /* Reduzindo o tamanho do subtítulo */
+  }
+
+  .description {
+    font-size: 16px; /* Ajustando o tamanho do texto */
+    padding: 0 20px; /* Adicionando padding para melhor espaçamento */
+  }
+
+  .cta {
+    font-size: 20px; /* Reduzindo o tamanho do botão */
+  }
+
+  #video-section, #feitos-section {
+    flex-direction: column; /* Ajustando os vídeos para coluna */
+    padding: 20px; /* Adicionando espaçamento */
+  }
+
+  #video-section video, #feitos-section video {
+    width: 100%; /* Tornando os vídeos responsivos */
+    max-width: 100%;
+  }
+
+  #imagens-section h2 {
+    font-size: 40px; /* Ajustando o título da seção de imagens */
+  }
+
+  #imagens-section .galeria {
+    flex-direction: column; /* As imagens vão se alinhar em coluna */
+    align-items: center; /* Centralizando as imagens */
+  }
+
+  #imagens-section .galeria .imagem-item {
+    width: 100%;
+    max-width: 90%; /* Garantindo que as imagens sejam menores em telas pequenas */
+  }
+
+  #heroi-section h2 {
+    font-size: 40px; /* Ajustando o tamanho da fonte do título */
+  }
+
+  .heroi-container img {
+    width: 100%; /* Tornando a imagem responsiva */
+    height: auto;
+  }
+
+  #nosso-heroi-section h2 {
+    font-size: 40px; /* Ajustando o título da seção */
+  }
+
+  #nosso-heroi-section img {
+    width: 100%; /* Ajustando a largura das imagens */
+  }
+
+  .heroi-container p {
+    font-size: 16px; /* Ajustando o tamanho do texto */
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 40px; /* Reduzindo ainda mais o título em telas muito pequenas */
+  }
+
+  .slogan {
+    font-size: 18px; /* Ajustando para telas menores */
+  }
+
+  .content h2 {
+    font-size: 28px; /* Ajustando o título */
+  }
+
+  .description {
+    font-size: 14px; /* Menor tamanho da descrição */
+  }
+
+  .cta {
+    font-size: 18px; /* Ajustando o tamanho do botão */
+  }
+
+  #imagens-section h2 {
+    font-size: 30px; /* Ajustando o título da seção de imagens */
+  }
+
+  .heroi-container img {
+    width: 100%; /* A imagem vai ocupar toda a largura da tela */
+  }
+
+  .heroi-container p {
+    font-size: 14px; /* Ajustando o tamanho do texto */
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Tela inicial -->
+  <div id="hero">
+    <h1>Capitão Pátria</h1>
+    <div class="slogan">O verdadeiro herói, sem limites.</div>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <h2>Quem é o Capitão Pátria?</h2>
+    <div class="description">
+      <p>Capitão Pátria é um dos personagens mais poderosos do universo, um símbolo do heroísmo e da força imbatível. Ele é a personificação da justiça, da coragem e da determinação.</p>
+      <p>Com habilidades sobre-humanas, como força descomunal, velocidade extrema e capacidade de voar, o Capitão Pátria se destaca como o herói mais respeitado e temido.</p>
+    </div>
+    <div class="cta">Descubra mais sobre o Capitão Pátria</div>
+  </div>
+
+  <!-- Seção de Vídeo -->
+  <div id="video-section">
+    <video id="capitao-video" controls>
+      <source src="it's homelander.mp4" type="video/mp4">
+      Seu navegador não suporta o formato de vídeo.
+    </video>
+  </div>
+
+  <!-- Feitos do Capitão Pátria -->
+  <div id="feitos-section">
+    <video id="feitos-video" controls>
+      <source src="homelander amazing.webm" type="video/webm">
+      Seu navegador não suporta o formato de vídeo.
+    </video>
+  </div>
+
+  <!-- Feitos do Nosso Herói -->
+  <div id="imagens-section">
+    <h2>Feitos do Nosso Herói</h2>
+    <div class="galeria">
+      <div class="imagem-item">
+        <img src="homelander and trump.jpg" alt="Feito do Capitão Pátria">
+        <p>Capitão Pátria ao lado de uma figura política, mostrando sua influência e poder.</p>
+      </div>
+      <div class="imagem-item">
+        <img src="homelander bad.jpg" alt="Feito do Capitão Pátria">
+        <p>Uma imagem controversa do Capitão Pátria, com uma expressão de determinação e controle para o bem de todas as pessoas.</p>
+      </div>
+      <div class="imagem-item">
+        <img src="homelander vs evil.jpg" alt="Feito do Capitão Pátria">
+        <p>O Capitão Pátria enfrentando forças do mal, sempre em defesa do que é justo.</p>
+      </div>
+      <div class="imagem-item">
+        <img src="homelander and brasil.jpg" alt="Feito do Capitão Pátria">
+        <p>Capitão Pátria em uma aliança simbólica com o Brasil, um herói global.</p>
+      </div>
+      <div class="imagem-item">
+        <img src="homelander true hero.jpg" alt="Feito do Capitão Pátria">
+        <p>A verdadeira face do Capitão Pátria, um herói que nunca desiste de lutar pela justiça.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- Seção do Herói -->
+<div id="nosso-heroi-section">
+  <h2>ELE É O VERDADEIRO HERÓI!</h2>
+  <div class="heroi-container">
+    <img src="homelander only hero.jpg" alt="Capitão Pátria em ação">
+    <p>O Capitão Pátria simboliza poder absoluto e uma determinação inabalável. Ele é a essência do heroísmo, pronto para proteger a todos com sua força inigualável.</p>
+  </div>
+</div>
+<div id="nosso-heroi-section">
+<div class="heroi-container">
+  <img src="i854315.jpg" alt="Capitão Pátria em ação">
+  <p>Nosso herói, desde seus quadrinhos, sempre mostrou que precisamos de um mundo melhor, sem inimigos e vilões, para não machucar os mais fracos.</p>
+</div>
+<div id="nosso-heroi-section">
+  <div class="heroi-container">
+    <img src="homelander.jpg" alt="Capitão Pátria em ação">
+    <p>ELE É O SÍMBOLO DA PAZ!</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script>
+    // Animações iniciais
+    gsap.to('#hero h1', { opacity: 1, y: -50, duration: 3, ease: 'power4.out' });
+    gsap.to('.slogan', { opacity: 1, y: 20, duration: 3, delay: 1.5, ease: 'power4.out' });
+
+    // Animação da entrada do conteúdo
+    gsap.to('.content h2', { opacity: 1, y: 40, duration: 1, delay: 2, ease: 'power4.out' });
+    gsap.from('.description', { opacity: 0, y: 30, duration: 1, delay: 2, ease: 'power4.out' });
+
+    // Detecção de rolagem
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        gsap.to('#video-section', { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' });
+      }
+      if (window.scrollY > 900) {
+        gsap.to('#feitos-section', { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' });
+      }
+      if (window.scrollY > 1500) {
+        gsap.to('#imagens-section', { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' });
+      }
+    });
+
+  // Adicionando novas seções para animação ao rolar
+  window.addEventListener('scroll', function() {
+    const videoSection = document.getElementById('video-section');
+    const feitosSection = document.getElementById('feitos-section');
+    const imagensSection = document.getElementById('imagens-section');
+    const verdadeiroHeroiSection = document.getElementById('nosso-heroi-section'); // Nova seção
+
+    const videoPosition = videoSection.getBoundingClientRect().top;
+    const feitosPosition = feitosSection.getBoundingClientRect().top;
+    const imagensPosition = imagensSection.getBoundingClientRect().top;
+    const verdadeiroHeroiPosition = verdadeiroHeroiSection.getBoundingClientRect().top; // Posição nova
+    const screenHeight = window.innerHeight;
+
+    if (videoPosition < screenHeight - 100) {
+      gsap.to('#video-section', { opacity: 1, y: 0, duration: 2, ease: 'power4.out' });
+    }
+
+    if (feitosPosition < screenHeight - 100) {
+      gsap.to('#feitos-section', { opacity: 1, y: 0, duration: 2, ease: 'power4.out' });
+    }
+
+    if (imagensPosition < screenHeight - 100) {
+      gsap.to('#imagens-section', { opacity: 1, y: 0, duration: 2, ease: 'power4.out' });
+    }
+
+    if (verdadeiroHeroiPosition < screenHeight - 100) { // Nova animação
+      gsap.to('#nosso-heroi-section', { opacity: 1, y: 0, duration: 2, ease: 'power4.out' });
+    }
+  });
+
+</script>
+</body>
+</html>
